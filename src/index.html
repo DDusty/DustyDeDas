@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DustyDeDas.nl</title>
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+
+    <div class="container" id="home">
+        <div id="navigation-bar">
+            <div class="menu">
+                <label class="hamburger">
+                    <input class="hamburger_checkbox" type="checkbox">
+                    <div class="hamburger_line"> </div>
+                    <div class="hamburger_line"> </div>
+                    <div class="hamburger_line"> </div>
+                </label> 
+            </div>
+        </div>
+
+        <div class="menu-dropdown">
+            <span class="menu-span"><a href="#home">Home</a></span>
+            <span class="menu-span"><a href="#about">Over Mij</a></span>
+            <span class="menu-span"><a href="#portfolio">Portfolio</a></span>
+            <span class="menu-span"><a href="#contact">Contact</a></span>
+        </div>
+            
+        <div class="text-section">
+                <h1>20 jarige student Software Engineering op het HvA. 
+                <a href="#about" style="color: #73C6B6;" >Over Mij →</a></h1> 
+        </div> 
+
+        <div class="about-section" id="about">
+            <h1 class="section-header">About me</h1>
+            <div class="about-image">
+                
+            </div>
+            <div class="about-info">
+                <h1>Dusty Dassen</h1>
+                <p>
+                    Hey, ik ben Dusty Dassen. Een 20 jarige software engineer.
+                    Ik volg huidig een opleiding software engineering op het HvA.
+                    In mijn vrije tijd maak ik graag projectjes om zo mijn programmeer
+                    kennis te verbeteren. Projecten waar ik trots op ben laat ik zien
+                    in mijn <a href="#portfolio" style="color: #73C6B6;" >Portfolio →</a> sectie.
+                </p>
+            </div>
+
+            <div class="about-skills">
+                <h1>skills</h1>
+            </div>
+        </div>
+
+        <div class="portfolio-section" id="portfolio">
+            <h1 class="section-header">Portfolio</h1>
+            
+            <div class="item-container">
+                <div class="item">
+                </div>
+
+            </div>
+
+            <div class="item-view">
+                <!-- item title / talen gebruikt / close button -->
+                <p class="item-text">
+
+                </p>
+
+                <!-- img slider -->
+            </div>
+
+
+        </div>
+
+        <div class="contact-section" id="contact">
+            <h1 class="section-header">Contact</h1>
+            <form action="/action_page.php">
+                <input type="text" id="name" name="name" placeholder="Your name..">
+            
+                <input type="text" id="subject" name="subject" placeholder="Subject..">
+            
+                <textarea id="message" name="message" placeholder="Write something.." style="height:200px"></textarea>
+            
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+
+        <div class="footer">
+            <h1>Dusty Dassen | <a href="" style="color: #73C6B6;">LinkedIn</a> </h1>
+        </div>
+    </div>
+
+    <script>
+        $('.hamburger_checkbox').click(function(){
+            var clicks = $(this).data('clicks');
+            if (clicks) {
+                $('.menu-dropdown').fadeOut();
+            } else {
+                $('.menu-dropdown').fadeIn();
+            }
+            $(this).data("clicks", !clicks);
+        });
+
+        $('.menu-span').click(function(){
+            $('.menu-dropdown').fadeOut();
+            $(".hamburger_checkbox").click();
+        });
+    </script>
+
+</body>
+</html>
