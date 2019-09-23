@@ -21,9 +21,8 @@
 
         <div class="menu-dropdown">
             <span class="menu-span"><a href="#home">Home</a></span>
-            <span class="menu-span"><a href="#about">Over Mij</a></span>
             <span class="menu-span"><a href="#portfolio">Portfolio</a></span>
-            <span class="menu-span"><a href="#contact">Contact</a></span>
+            <span class="menu-span"><a href="#about">Over Mij</a></span>
         </div>
             
         <div class="text-section">
@@ -31,64 +30,75 @@
                 <a href="#about" style="color: #73C6B6;" >Over Mij →</a></h1> 
         </div> 
 
-        <div class="about-section" id="about">
-            <h1 class="section-header">About me</h1>
-            <div class="about-image">
-                
-            </div>
-            <div class="about-info">
-                <h1>Dusty Dassen</h1>
-                <p>
-                    Hey, ik ben Dusty Dassen. Een 20 jarige software engineer.
-                    Ik volg huidig een opleiding software engineering op het HvA.
-                    In mijn vrije tijd maak ik graag projectjes om zo mijn programmeer
-                    kennis te verbeteren. Projecten waar ik trots op ben laat ik zien
-                    in mijn <a href="#portfolio" style="color: #73C6B6;" >Portfolio →</a> sectie.
-                </p>
-            </div>
+        <div class="white-section"></div>
 
-            <div class="about-skills">
-                <h1>skills</h1>
-            </div>
+        <img class="left-arrow" src="assets/img/arrow.png" onclick="plusSlides(-1)">
+        <img class="right-arrow" src="assets/img/arrow.png" onclick="plusSlides(1)">
+
+        <div id="portfolio"></div>
+        <div class="item fade"><img src="assets/img/daslogo.jpg"></div>    
+
+        <div class="item-text fade">
+            <h1>Deze Website</h1>
+            <p>
+                Een hele goede dag meneer, in deze website heb ik gebruik gemaakt van
+                CSS, HTML, JS/Jquery en node.js. De DB is een NOSQL db gemaakt met mongodb.
+                In de css heb ik gebruik gemaakt van CSS grid want dit is fcking lekker.
+                kan gewoon alles erop pleure waar ik wil en nog responsive ook. helemaal top.
+            </p>
+            <a href="github.com">zie de github -></a>
         </div>
 
-        <div class="portfolio-section" id="portfolio">
-            <h1 class="section-header">Portfolio</h1>
-            
-            <div class="item-container">
-                <div class="item">
-                </div>
+        <div class="item fade"><img src="assets/img/aboutbg.jpg"></div>    
 
-            </div>
-
-            <div class="item-view">
-                <!-- item title / talen gebruikt / close button -->
-                <p class="item-text">
-
-                </p>
-
-                <!-- img slider -->
-            </div>
-
-
+        <div class="item-text fade">
+            <h1>Deze Website</h1>
+            <p>
+                Een hele sadasdsaasdsdjfide dag meneer, in deze website heb ik gebruik gemaakt van
+                CSS, HTML, JS/Jquery en node.js. De DB is een NOSQL db gemaakt met mongodb.
+                In de css heb ik gebruik gemaakt van CSS grid want dit is fcking lekker.
+                kan gewoon alles erop pleure waar ik wil en nog responsive ook. helemaal top.
+                zie de github ->
+            </p>
         </div>
 
-        <div class="contact-section" id="contact">
-            <h1 class="section-header">Contact</h1>
-            <form action="/action_page.php">
-                <input type="text" id="name" name="name" placeholder="Your name..">
-            
-                <input type="text" id="subject" name="subject" placeholder="Subject..">
-            
-                <textarea id="message" name="message" placeholder="Write something.." style="height:200px"></textarea>
-            
-                <input type="submit" value="Submit">
-            </form>
+        <div class="dot-container">
+            <span class="dot" onclick="currentSlide(1)"></span> 
+            <span class="dot" onclick="currentSlide(2)"></span> 
+            <span class="dot" onclick="currentSlide(3)"></span> 
+        </div>
+
+        <div class="about-image" id="about"></div>
+
+        <div class="about-info">
+            <h1>Dusty Dassen</h1>
+            <p>
+                Hey, ik ben Dusty Dassen. Een 20 jarige software engineer.
+                Ik volg huidig een opleiding software engineering op het HvA.
+                <br/><br/>
+
+                Op school leren wij programmeren in java. Hier leren wij bijvoorbeeld OOP in 
+                en javaFx. Ook leren wij algorthims and datascructures met java.
+                <br/><br/>
+
+                De projecten die wij op school maken zijn web based. Dit betekent dat wij
+                voor ons project website's moeten opzetten. Hier staan altijd requirments aan.
+                In het eerste project leerde wij standaard html, css en Jquery. In het 2e project
+                kregen wij wat meer vrijheid. Wij moesten bepalen wat wij gingen gebruiken zolang
+                het maar OOP werd gedaan. Ik en mijn team hebben toen Python met Flask gebruikt.
+                In het 3e project moeten wij gebruik maken van de webframework Angular.
+
+                <br/><br/>
+                In mijn vrije tijd maak ik graag projectjes om zo mijn programmeer
+                kennis te verbeteren. Projecten waar ik trots op ben laat ik zien
+                in mijn <a href="#portfolio" style="color: #73C6B6;" >Portfolio →</a> sectie.
+            </p>
         </div>
 
         <div class="footer">
-            <h1>Dusty Dassen | <a href="" style="color: #73C6B6;">LinkedIn</a> </h1>
+            <h1>Dusty Dassen | <a href="" style="color: #73C6B6;">LinkedIn</a> | copyright &copy; 2019 </h1>
         </div>
+
     </div>
 
     <script>
@@ -106,6 +116,45 @@
             $('.menu-dropdown').fadeOut();
             $(".hamburger_checkbox").click();
         });
+
+        // img slider
+        var slideIndex = 1;
+        showSlides(slideIndex);
+
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
+
+        function showSlides(n) {
+            var i;
+            var slides = document.getElementsByClassName("item");
+            var text = document.getElementsByClassName("item-text");
+            var dots = document.getElementsByClassName("dot");
+
+            if (n > slides.length) {
+                slideIndex = 1
+            }    
+
+            if (n < 1) {
+                slideIndex = slides.length
+            }
+
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";  
+                text[i].style.display = "none";
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+
+            slides[slideIndex-1].style.display = "block";  
+            text[slideIndex-1].style.display = "block";  
+            dots[slideIndex-1].className += " active";
+        }
     </script>
 
 </body>
