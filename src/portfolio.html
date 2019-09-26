@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DustyDeDas.nl</title>
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+    <div class="container" style="background-color: #E5E7E9">
+        <div id="navigation-bar">
+            <div class="menu">
+                <label class="hamburger">
+                    <input class="hamburger_checkbox" type="checkbox">
+                    <div class="hamburger_line"> </div>
+                    <div class="hamburger_line"> </div>
+                    <div class="hamburger_line"> </div>
+                </label> 
+            </div>
+        </div>
+
+        <div class="menu-dropdown">
+            <span class="menu-span"><a href="index.html">Home</a></span>
+            <span class="menu-span"><a href="portfolio.html">Portfolio</a></span>
+            <span class="menu-span"><a href="about.html">Over Mij</a></span>
+        </div>
+
+        <button class="left-arrow" onclick="plusSlides(-1)">&#171;</button>
+        <button class="right-arrow" onclick="plusSlides(1)">&#187;</button>
+
+        <div class="item fade"><img src="assets/img/monitoreweb.jpg"></div>    
+
+        <div class="item-text fade">
+            <h1>Deze Website</h1>
+            <p>
+                Een hele goede dag meneer, in deze website heb ik gebruik gemaakt van
+                CSS, HTML, JS/Jquery en node.js. De DB is een NOSQL db gemaakt met mongodb.
+                In de css heb ik gebruik gemaakt van CSS grid want dit is fcking lekker.
+                kan gewoon alles erop pleure waar ik wil en nog responsive ook. helemaal top.
+            </p>
+            <a href="github.com">zie de github -></a>
+        </div>
+
+        <div class="footer" style="color: black">
+            <h1>Dusty Dassen | <a href="" style="color: #73C6B6;">LinkedIn</a> | copyright &copy; 2019 </h1>
+        </div>
+    </div>
+
+    <script>
+        $('.hamburger_checkbox').click(function(){
+            var clicks = $(this).data('clicks');
+            if (clicks) {
+                $('.menu-dropdown').fadeOut();
+            } else {
+                $('.menu-dropdown').fadeIn();
+            }
+            $(this).data("clicks", !clicks);
+        });
+
+        $('.menu-span').click(function(){
+            $('.menu-dropdown').fadeOut();
+            $(".hamburger_checkbox").click();
+        });
+
+        // img slider
+        var slideIndex = 1;
+        showSlides(slideIndex);
+
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+
+        function showSlides(n) {
+            var i;
+            var slides = document.getElementsByClassName("item");
+            var text = document.getElementsByClassName("item-text");
+
+            if (n > slides.length) {
+                slideIndex = 1
+            }    
+
+            if (n < 1) {
+                slideIndex = slides.length
+            }
+
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";  
+                text[i].style.display = "none";
+            }
+
+            slides[slideIndex-1].style.display = "block";  
+            text[slideIndex-1].style.display = "block";  
+        }
+    </script>
+</body>
+</html>
