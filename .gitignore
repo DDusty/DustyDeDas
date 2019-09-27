@@ -1,2 +1,4 @@
 **/admin
 src/assets/css/panel.css
+/node_modules
+nodemon.json

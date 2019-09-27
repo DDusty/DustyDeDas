@@ -114,7 +114,7 @@ html, body{
 button:focus {outline:0;}
 
 .left-arrow:hover, .right-arrow:hover{
-  /* transform: scale(1.1); */
+  transform: scale(1.1);
 }
 
 .left-arrow{

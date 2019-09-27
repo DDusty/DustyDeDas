@@ -1,0 +1,81 @@
+html, body{
+    margin: 0;
+    background-color: #1C1C1C;
+    font-family: 'IBM Plex Mono', monospace;
+    padding: 0;
+    scroll-behavior: smooth;
+  }
+  
+  .container{
+    display: grid;
+    grid-template-columns: repeat(10, 10fr);
+    grid-template-rows: repeat(20, 5fr);
+    height: 100vh;
+  }
+
+  .list-projects{
+      color: white;
+      grid-column: 1 / 4;
+      margin-left: 50px;
+      grid-row: 3;
+      padding: 10px;
+      border-radius: 10px;
+      background-color: #E5E7E9;
+  }
+
+  .item{
+      background-color: whitesmoke;
+      padding: 15px;
+      border-radius: 5px;
+      color: black;
+      margin-top: 10px;
+  }
+
+  .item > button{
+      float: right;
+      background-color: blue;
+      padding: 5px;
+      font-size: 100%;
+      border: none;
+      margin-left: 5px;
+  }
+
+  .container-form{
+      grid-column: 4 / 11;
+      margin-left: 50px;
+      margin-right: 50px;
+      grid-row: 3;
+      padding: 10px;
+      border-radius: 10px;
+      background-color: #E5E7E9;
+  }
+
+  .container-form > span{
+      font-size: 150%;
+  }
+
+  form{
+      width: 100%;
+  }
+
+  textarea{
+    margin-top: 5px;
+    width: 98%;
+    border-radius: 5px;
+    border: none;
+    padding: 10px;
+  }
+
+  input{
+      margin-top: 5px;
+      width: 98%;
+      border-radius: 5px;
+      border: none;
+      padding: 10px;
+  }
+
+  input[type="submit"]{
+      background-color: lightgreen;
+      width: 50%;
+      margin-left: 25%;
+  }
