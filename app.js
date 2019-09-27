@@ -1,14 +1,17 @@
 const express = require('express')
-const app = express()
+const app = express();
+const fs = require('fs');
 const http = require('http');
 const assert = require('assert');
 const Project = require(__dirname + '/src/js/project.js');
+var router = express.Router();
 
 // Parse URL-encoded bodies (as sent by HTML forms)
 app.use(express.urlencoded());
 
 // Parse JSON bodies (as sent by API clients)
 app.use(express.json());
+app.use('/', router);
 
 app.use(express.static('public'));
 const server = http.createServer((req, res) => {
@@ -19,7 +22,6 @@ const server = http.createServer((req, res) => {
 
 const mongoose = require('mongoose');
 mongoose.connect('mongodb+srv://Dusty:' + process.env.MONGO_ATLAS_PW + '@dustydb-q49hz.azure.mongodb.net/Dustydedas?retryWrites=true&w=majority', {useNewUrlParser: true});
-
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
@@ -38,10 +40,6 @@ app.get('/', function (req, res) {
   res.sendFile(__dirname + '/src/index.html');
 })
 
-app.get('/portfolio', function (req, res) {
-    res.sendFile(__dirname + '/src/portfolio.html');
-})
-
 app.get('/about', function (req, res) {
     res.sendFile(__dirname + '/src/about.html');
 })
@@ -54,6 +52,30 @@ app.get('/admin/panel', function (req, res) {
     res.sendFile(__dirname + '/src/admin/panel.html');
 })
 
+app.get('/get-data', function (req, res, next) {
+     //res.sendFile(__dirname + '/src/portfolio.html');
+    
+    Project.find().lean().exec()
+    .then(docs => {
+        //console.log(docs);
+        //res.json({items: docs}).status(200);
+        //return res.end(JSON.stringify(docs));
+        res.json(docs);
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json({error: err});
+    });
+
+    
+    app.use('/', router);
+    //res.sendFile(__dirname + '/src/portfolio.html');
+})
+
+router.get('/portfolio', function (req, res, next) {
+    res.sendFile(__dirname + '/src/portfolio.html');
+})
+
 app.post('/insert', function(req, res){
     const project = new Project({
         projectName: req.body.title,
@@ -64,17 +86,40 @@ app.post('/insert', function(req, res){
 
     project.save().then(result => {
         console.log(result);
+        res.status(200).json({result});
     })
-    .catch(err => console.log(err));
+    .catch(err => {
+        console.log(err);
+        res.status(500).json({error: err});
+    });
 })
 
-app.post('/update', function (req, res) {
-    
-})
+// app.patch('/:projectTitle', function (req, res) {
+//     const title = req.params.projectTitle;
+//     const updateOps = {};
 
-app.post('/delete', function (req, res) {
-    
-})
+//     for(const ops of req.body){
+//         updateOps[ops.propName] = ops.value;
+//     }
+//     Project.update({projectName: title}, { $set: updateOps}).exec().then(result => {
+//         console.log(result);
+//         res.status(200).json({result});
+//     }).catch(err => {
+//         console.log(err);
+//         res.status(200).json({error: err});
+//     });
+// })
+
+// app.delete('/:projectTitle', function (req, res) {
+//     const title = req.params.projectTitle;
+//     Project.remove({projectName: title}).exec().then(result => {
+//         res.status(200).json(result);
+//     }).catch(err => {
+//         console.log(err);
+//         res.status(500).json({error: err});
+        
+//     });
+// })
  
 app.listen(3000)
 
