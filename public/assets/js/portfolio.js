@@ -1,19 +1,5 @@
 
-// $(document).ready(()=> {
-   
-   $("#left-arrow").click(function(){
-       console.log('ccc');
-        $.ajax({
-            url: '/get-data',
-            type: 'GET',
-            dataType: 'json',
-            succes: (data) => {
-                console.log('ajax succes', data);
-            }
-        });
-   });
-
-   const display = ('#display');
+$(document).ready(()=> {
 
    const getData = ()=>{
        fetch('/get-data', {method: "get"}).then((response) => {
@@ -30,13 +16,14 @@
        return {
            projectName: Project.projectName,
            description: Project.description,
-           github: Project.githubLink
+           github: Project.githubLink,
+           imageLink: Project.imageLink
        }
    }
 
    const buildTemplate = (Project, ids)=>{
-       return '<div class="item fade"><img src="assets/img/monitoreweb.jpg"></div><div class="item-text fade" ><h1>' + Project.projectName + 
-       '</h1><p>'+ Project.description +'</p><a target="blank" href="'+ Project.githubLink +'">zie de github -></a></div>';
+       return '<div class="item fade"><img src="'+ Project.imageLink +'"></div><div class="item-text fade" ><h1>' + Project.projectName + 
+       '</h1><p>'+ Project.description +'</p><a target="blank" href="https://www.'+ Project.githubLink +'">zie de github -></a></div>';
    }
 
    const displayProjects = (data)=>{
@@ -48,4 +35,4 @@
        })
    }
   
-// })
+})
